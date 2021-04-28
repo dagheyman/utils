@@ -1,5 +1,5 @@
-# docker build -t ctf-image .
-# docker run --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --detach --name ctf --interactive ctf-image
+# docker build -t ctf-image . --platform linux/amd64
+# docker run --platform linux/amd64 --rm --volume $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --detach --name ctf --interactive ctf-image
 # docker exec -it ctf /bin/bash
 
 FROM ubuntu:18.04
@@ -15,6 +15,7 @@ RUN apt-get install vim \
 	gcc \
 	gdb \
 	tree \
+	tmux \
 	build-essential \
 	gcc-multilib \
 	gdb-multiarch \
